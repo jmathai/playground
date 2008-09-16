@@ -19,7 +19,7 @@ class Db
 
   def query(sql)
     if(@conn.nil?)
-      raise DatabaseConnectionError, "No database connection found"
+      raise DatabaseError, "No database connection found for function query()"
     end
 
     begin
