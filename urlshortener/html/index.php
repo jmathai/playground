@@ -4,7 +4,7 @@ try
   $config = parse_ini_file('../secret/mysql');
   $dbh = new PDO("mysql:host={$config['host']};dbname={$config['name']}", $config['user'], $config['pass']);
   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-  $key = addslashes(substr($_GET['__key__'], -1));
+  $key = addslashes(substr($_GET['__key__'], 1));
   $stmt = $dbh->query("SELECT ur_id, ur_url FROM url_redirect WHERE ur_key='{$key}'");
 
   $redirect = $stmt->fetch();
