@@ -16,8 +16,9 @@ try
 
   $ip = addslashes($_SERVER['REMOTE_ADDR']);
   $agent = addslashes($_SERVER['HTTP_USER_AGENT']);
+  $referer = addslashes($_SERVER['HTTP_REFERER']);
   $time  = time();
-  $res = $dbh->exec($sql = "INSERT INTO url_redirect_log(url_ur_id, url_ip, url_userAgent, url_dateCreated) VALUES({$redirect['ur_id']}, '{$ip}', '{$agent}', {$time})");
+  $res = $dbh->exec($sql = "INSERT INTO url_redirect_log(url_ur_id, url_ip, url_userAgent, url_referer, url_dateCreated) VALUES({$redirect['ur_id']}, '{$ip}', '{$agent}', '{$referer}', {$time})");
   if(!$res)
   {
     error_log("Failure inserting into url_redirect_log ({$sql})");
@@ -32,4 +33,3 @@ catch(Exception $e)
   header('HTTP/1.1 404 Not Found');
   echo 'Document not found';
 }
-?>
