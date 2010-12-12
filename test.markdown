@@ -1,4 +1,4 @@
 [Test][test]
 
 
-[test]: javascript:alert(0);
+[test]: http://foo.com/"><script>javascript:alert(0);</script>
